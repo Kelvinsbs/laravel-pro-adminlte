@@ -1,5 +1,14 @@
 @extends('layouts.default')
 
+@section('page-title', 'Dashboard')
+
+@php
+    $breadcrumbs = [
+        ['label' => 'Home', 'route' => ''],
+        ['label' => 'Dashboard', 'route' => ''],
+    ];
+@endphp
+
 @section('content')
 <div class="row"> <!--begin::Col-->
     <div class="col-lg-3 col-6"> <!--begin::Small Box Widget 1-->
