@@ -6,7 +6,13 @@
         <div class="login-logo"> <a href="../index2.html"><b>Admin</b>LTE</a> </div> <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">Reset password</p>
+
+                @session('status')
+                    <div class="alert alert-success" role="alert">
+                        {{ $value }}
+                    </div>
+                @endsession
                 <form action="{{ route('password.email') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
