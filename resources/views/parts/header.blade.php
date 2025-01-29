@@ -91,7 +91,7 @@
                     data-bs-toggle="dropdown"> <img src="{{ Vite::asset('resources/images/user2-160x160.jpg') }}"
                         class="user-image rounded-circle shadow" alt="User Image">
                     <span class="d-none d-md-inline">
-                        {{auth()->user()->name}}
+                        {{ auth()->user()->name }}
                     </span> </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end"> <!--begin::User Image-->
                     <li class="user-header text-bg-primary"> <img
@@ -109,8 +109,13 @@
                             <div class="col-4 text-center"> <a href="#">Friends</a> </div>
                         </div> <!--end::Row-->
                     </li> <!--end::Menu Body--> <!--begin::Menu Footer-->
-                    <li class="user-footer"> <a href="#" class="btn btn-default btn-flat">Profile</a> <a
-                            href="#" class="btn btn-default btn-flat float-end">Sign out</a> </li>
+                    <li class="user-footer">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-default btn-flat float-end">Logout</button>
+                        </form>
+                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                    </li>
                     <!--end::Menu Footer-->
                 </ul>
             </li> <!--end::User Menu Dropdown-->
