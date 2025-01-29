@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="login-box">
-        <div class="login-logo"> <a href="../index2.html"><b>Admin</b>LTE</a> </div> <!-- /.login-logo -->
+        <div class="login-logo"> <a href="{{ route('login') }}"><b>Admin</b>LTE</a> </div> <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Reset password</p>
@@ -25,7 +25,7 @@
                     <div class="d-grid gap-2"> <button type="submit" class="btn btn-primary">Send me the link</button> </div>
                 </form>
                 <div class="mt-2 text-center">
-                    <p class="mb-0"> <a href="register.html" class="text-center">
+                    <p class="mb-0"> <a href="{{ route('login') }}" class="text-center">
                             Back to login
                         </a> </p>
                 </div>
