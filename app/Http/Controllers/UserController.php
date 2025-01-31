@@ -17,7 +17,14 @@ class UserController extends Controller
     }
 
     public function store(Request $request) {
-        dd($request);
+        $input = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6'
+        ]);
+
+        User::create($input);
+        return redirect()->route('users.index')->with('status', 'Usuário adicionado com sucesso!');
 
     }
 }
