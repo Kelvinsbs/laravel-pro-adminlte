@@ -45,6 +45,20 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('status', 'Usuário editado com sucesso!');
     }
 
+    public function updateProfile(User $user, Request $request) {
+        dd($request->all());
+        $input = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'exclude_if:password,null|min:6'
+        ]);
+
+        $user->fill($input);
+        $user->save();
+
+        return redirect()->route('users.index')->with('status', 'Usuário editado com sucesso!');
+    }
+
     public function destroy(User $user) {
         $user->delete();
         return back()->with('status', 'Usuário deletado com sucesso!');
