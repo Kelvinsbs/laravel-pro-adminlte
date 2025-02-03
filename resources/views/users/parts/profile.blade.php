@@ -10,8 +10,10 @@
             <div class="mb-3">
                 <label for="name" class="form-label">Tipo de Pessoa</label>
                 <select name="type" id="type" class="form-control @error('type') is-invalid @enderror">
-                    <option value="PJ">PJ</option>
-                    <option value="PF">PF</option>
+                    @foreach (['PF', 'PJ'] as $type)
+                            <option value="{{ $type }}" @selected(old('type') === $type || $user?->profile?->type === $type)>{{ $type }}</option>
+                    @endforeach
+
                 </select>
                 @error('type')
                     <div class="invalid-feedback">
@@ -22,7 +24,7 @@
             <div class="mb-3">
                 <label class="form-label">Endereço</label>
                 <input type="address" name="address" class="form-control @error('address') is-invalid @enderror"
-                    aria-describedby="emailHelp" value="{{ old('address') }}">
+                    aria-describedby="emailHelp" value="{{ old('address') ?? $user?->profile?->address }}">
                 @error('address')
                     <div class="invalid-feedback">
                         {{ $message }}
