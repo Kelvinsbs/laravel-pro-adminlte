@@ -58,6 +58,15 @@ class UserController extends Controller
         return back()->with('status', 'Perfil do usuário editado com sucesso!');
     }
 
+    public function updateInterests(User $user, Request $request) {
+
+        dd($request->all());
+        $input = $request->validate([
+            'interests' => 'required|array',
+        ]);
+
+    }
+
     public function destroy(User $user) {
         $user->delete();
         return back()->with('status', 'Usuário deletado com sucesso!');
