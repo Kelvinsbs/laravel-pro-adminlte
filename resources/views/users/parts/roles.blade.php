@@ -1,5 +1,5 @@
 <div class="card">
-    <form action="{{ route('users.updateInterests', $user->id) }}" method="POST">
+    <form action="{{ route('users.updateRoles', $user->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="card-header">
@@ -10,7 +10,7 @@
             @foreach ($roles as $role)
                 <div class="form-check">
 
-                    <input class="form-check-input @error('roles') is-invalid @enderror" type="checkbox" value="{{ $role->id }}" name="roles[]">
+                    <input class="form-check-input @error('roles') is-invalid @enderror" type="checkbox" value="{{ $role->id }}" @checked(in_array($role->name, $user->roles->pluck('name')->toArray())) name="roles[]">
                     <label class="form-check-label" for="flexCheckChecked">
                         {{$role->name}}
                     </label>
